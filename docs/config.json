@@ -1,12 +1,11 @@
 {
     "title": "LEAD'S FACTORY",
-    "tagline": "The Easiest Way To Document Your Project",
-    "author": "Justin Walsh",
-    "image": "app.png",
+    "tagline": "Documentation de la lead's factory",
     "ignore": {
             "files": ["Work_In_Progress.md"],
             "folders": ["99_Not_Ready"]
     },
+    "float" : false,
     "live": {
         "inherit_index": true,
         "clean_urls": true
