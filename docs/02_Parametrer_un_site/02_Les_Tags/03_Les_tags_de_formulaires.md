@@ -1,16 +1,12 @@
-# LEAD'S FACTORY
-
-[toc]
-
-## Templating des formulaires
+# Templating des formulaires
 
 
-### Objet : Text
+## Objet : Text
 
-#### Description : 
+### Description :
 C’est un champ texte à une ligne.
 
-#### Appel TWIG :
+### Appel TWIG :
 
 
 	{{ field(
@@ -21,18 +17,18 @@ C’est un champ texte à une ligne.
 	}}
 
 
-#### Rendu HTML :
+### Rendu HTML :
 
 	<input type="text" id="lastName" name="lastName"/>
 	
 
 
-### Objet : TextArea
+## Objet : TextArea
 
-#### Description : 
+### Description :
 C’est un champ texte à une ligne.
 
-#### Appel TWIG :
+### Appel TWIG :
 
 
 	{{ field(
@@ -43,18 +39,18 @@ C’est un champ texte à une ligne.
 	}}
 
 
-#### Rendu HTML :
+### Rendu HTML :
 
 	<textarea id="lastName" name="lastName"></textarea>
 
 
-### Objet : Téléphone
+## Objet : Téléphone
 
-#### Description : 
+### Description :
 C’est un champ texte à une ligne utilisable pour la saisie d’un numéro de téléphone.
 Attention, n’oubliez l’ajout des contrôles de validation sur ce champ.
 
-#### Appel TWIG :
+### Appel TWIG :
 
 
 	{{ field(
@@ -65,18 +61,18 @@ Attention, n’oubliez l’ajout des contrôles de validation sur ce champ.
 	}}
 
 
-#### Rendu HTML :
+### Rendu HTML :
 
 	<input type="text" id="myphone"/>
 
 
-### Objet : Email
+## Objet : Email
 
-#### Description : 
+### Description :
 C’est un champ texte à une ligne utilisable pour la saisie d’un email.
 Attention, n’oubliez l’ajout des contrôles de validation sur ce champ.
 
-#### Appel TWIG :
+### Appel TWIG :
 
 
 	{{ field(
@@ -87,17 +83,17 @@ Attention, n’oubliez l’ajout des contrôles de validation sur ce champ.
 	}}
 
 
-#### Rendu HTML :
+### Rendu HTML :
 
 	<input type="text" id="myphone"/>
 
 
-### Objet : Checkbox
+## Objet : Checkbox
 
-#### Description : 
+### Description :
 C’est une case à cocher. Par défaut non cochée.
 
-#### Appel TWIG :
+### Appel TWIG :
 
 
 	{{ field(
@@ -109,11 +105,11 @@ C’est une case à cocher. Par défaut non cochée.
 	}}
 
 
-#### Rendu HTML :
+### Rendu HTML :
 
 	<input type="checkbox" id="myCheckbox" checked="checked"/>
 
-#### Attributs :
+### Attributs :
 
 
 | Attribut           | Description      |
@@ -121,9 +117,9 @@ C’est une case à cocher. Par défaut non cochée.
 |@checked='checked'  | Case cochée par défaut |
 
 
-### Objet : Liste
+## Objet : Liste
 
-#### Description : 
+### Description :
 Ceci affiche une liste de référence contenant les valeurs de la liste configurée dans le backoffice sous l’identifiant ‘salutation’.
 
 La liste va pouvoir etre affichée sous une des formes suivantes :
@@ -133,7 +129,7 @@ La liste va pouvoir etre affichée sous une des formes suivantes :
 - Liste de choix type ‘options’
 
 
-#### Appel TWIG :
+### Appel TWIG :
 
 
 	{{ 
@@ -149,13 +145,13 @@ La liste va pouvoir etre affichée sous une des formes suivantes :
 	}}
 
 
-#### Rendu HTML :
+### Rendu HTML :
 
 	<select id="salutation">
 		<option... valeurs de la liste de ref />
 	</select>
 
-#### Attributs :
+### Attributs :
 
 
 | Attribut | Description                                     |
@@ -166,13 +162,13 @@ La liste va pouvoir etre affichée sous une des formes suivantes :
 
 
 
-### Objet : Listes liées
+## Objet : Listes liées
 
 
-#### Description : 
+### Description :
 Les listes liées permettent la mise à jour en cascade de listes de références suivant les choix de l’utilisateur.
 
-#### Appel TWIG :
+### Appel TWIG :
 
 
 	{{ 
@@ -188,7 +184,7 @@ Les listes liées permettent la mise à jour en cascade de listes de référence
 	}}
                 			
 	
-#### Exemple d'utilisation avec code postal / ville
+### Exemple d'utilisation avec code postal / ville
 
         <div>
 
@@ -225,7 +221,7 @@ Cet exemple assume que vous disposez de deux listes de références :
 
 
 
-#### Rendu HTML :
+### Rendu HTML :
 
 	<select id="salutation">
 		<option... valeurs de la liste de ref />
@@ -233,7 +229,7 @@ Cet exemple assume que vous disposez de deux listes de références :
 	
 *un appel javascript ajouté se chargera de la mise à jour en cascade*
 
-#### Attributs :
+### Attributs :
 
 
 | Attribut | Description                                     |
@@ -244,7 +240,7 @@ Cet exemple assume que vous disposez de deux listes de références :
 
 
 
-## Tag d'appel Twig
+# Tag d'appel Twig
 
 	<link rel="stylesheet" type="text/css" href="[url serveur lead's factory]/leads-factory/web/bundles/tellawleadsfactory/js/libs/formValidator/developr.validationEngine.css" />
 	

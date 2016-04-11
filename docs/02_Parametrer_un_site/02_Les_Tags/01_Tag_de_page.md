@@ -5,43 +5,44 @@ Cette section à pour objectif de documenter l'utilisation de tags dans vos site
 
 ## Le tag de base
 
+```
+<html>
+<head>
 
-	<html>
-	<head>
+    <script src="/weka-leadsfactory/web/bundles/tellawleadsfactory/js/libs/jquery-1.11.3.min.js"></script>
 
-	    <script src="/weka-leadsfactory/web/bundles/tellawleadsfactory/js/libs/jquery-1.11.3.min.js"></script>
+</head>
+<body>
 
-	</head>
-	<body>
+<div id="formulaireleads" class="loading-leads">
+    <p class="loading-leads-txt">Merci de patienter ...</p>
+</div>
+<script type="text/javascript">
+    baseUrl = '[[INSEREZ_L_URL_DE_LA_LEADS]]'; // Se termine par un slash
+    codeAction = '[[INSEREZ_VOTRE_CODE_ACTION]]';
+    codeFormulaire = '[[INSEREZ_VOTRE_CODE_FORMULAIRE]]';
+    params = [];
+    jQuery.when(
+        jQuery.getScript(baseUrl+'web/bundles/tellawleadsfactory/js/lf.js'),
+        jQuery.getScript(baseUrl+'web/bundles/tellawleadsfactory/js/libs/formValidator/jquery.validationEngine.js'),
+        jQuery.getScript(baseUrl+'web/bundles/tellawleadsfactory/js/libs/formValidator/languages/jquery.validationEngine-fr.js'),
+        jQuery.getScript(baseUrl+'web/app_dev.php/client/form/twig/'+ codeFormulaire),
+        jQuery.getScript(baseUrl+'web/bundles/tellawleadsfactory/js/libs/phoneformat.js'),
+        jQuery(document).data("readyDeferred")
+    ).done(function() {
+        leadsfactory.setCodeAction (codeAction);
+        jQuery('#formulaireleads').html(leadsfactory.html);
+        jQuery('#formulaireleads').removeClass('loading-leads');
+        var params = {};
+        var options = {};
+        leadsfactory.init(codeFormulaire, params, options);
+    });
+</script>
 
-	<div id="formulaireleads" class="loading-leads">
-	    <p class="loading-leads-txt">Merci de patienter ...</p>
-	</div>
-	<script type="text/javascript">
-	    baseUrl = '[[INSEREZ_L_URL_DE_LA_LEADS]]'; // Se termine par un slash
-	    codeAction = '[[INSEREZ_VOTRE_CODE_ACTION]]';
-	    codeFormulaire = '[[INSEREZ_VOTRE_CODE_FORMULAIRE]]';
-	    params = [];
-	    jQuery.when(
-	        jQuery.getScript(baseUrl+'web/bundles/tellawleadsfactory/js/lf.js'),
-	        jQuery.getScript(baseUrl+'web/bundles/tellawleadsfactory/js/libs/formValidator/jquery.validationEngine.js'),
-	        jQuery.getScript(baseUrl+'web/bundles/tellawleadsfactory/js/libs/formValidator/languages/jquery.validationEngine-fr.js'),
-	        jQuery.getScript(baseUrl+'web/app_dev.php/client/form/twig/'+ codeFormulaire),
-	        jQuery.getScript(baseUrl+'web/bundles/tellawleadsfactory/js/libs/phoneformat.js'),
-	        jQuery(document).data("readyDeferred")
-	    ).done(function() {
-	        leadsfactory.setCodeAction (codeAction);
-	        jQuery('#formulaireleads').html(leadsfactory.html);
-	        jQuery('#formulaireleads').removeClass('loading-leads');
-	        var params = {};
-	        var options = {};
-	        leadsfactory.init(codeFormulaire, params, options);
-	    });
-	</script>
-
-	</script>
-	</body>
-	</html>
+</script>
+</body>
+</html>
+```
 
 Ce tag utilise trois variables pour fonctionner :
 

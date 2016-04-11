@@ -1,12 +1,8 @@
-# LEAD'S FACTORY
-
-[toc]
-
-## API Taches planifiées
+# API Taches planifiées
 
 L'api de taches planifiées de la lead's factory permet la programmation et le monitoring de commandes symfony.
 
-### Les commandes Symfony
+## Les commandes Symfony
 
 Symfony 2 permet la création de commandes dans sa console. Ses commandes utilisent le framework et le container Symfony comme environnement d'execution.
 
@@ -14,19 +10,19 @@ Dans la lead's factory, une commande se trouve par convention dans un dossier **
 
 C'est une classe qui etend généralement une des classes suivantes :
 
-`ContainerAwareCommand (Symfony\Bundle\FrameworkBundle\Command)`
-`Command (Symfony\Component\Console\Command)`
+```ContainerAwareCommand (Symfony\Bundle\FrameworkBundle\Command)```
+```Command (Symfony\Component\Console\Command)```
 
 Vous pouvez lister les commandes existantes en utilisant en ligne de commande :
 
-`php app/console`
+```php app/console```
 
 
-### Rendre un commande compatible
+## Rendre un commande compatible
 
 Toutes les commandes Symfony 2 sont compatibles avec le planificateur de taches de la lead's factory. Seul le chargement automatique dans la lead's factory demande la configuration d'un service supplémentaire (voir chapitre : Pré-configurer une tache)
 
-### Pré-configurer une tache dans l'admin
+## Pré-configurer une tache dans l'admin
 
 Il suffit de créer un service implémentant l'interface __IScheduledJob (Tellaw\LeadsFactoryBundle\Utils)__ taggé avec le tag __scheduled.job__
 
@@ -79,7 +75,7 @@ Pour initialiser automatiquement une tâche planifiée avec monitoring sur le cr
 
 Après la première initilisation, les valeurs sont modifiables dans l'administration de la lead's. Pour éviter l'écrasement de paramétrage, seule la 'commande' sera mise à jour si sa valeur change dans le service d'initialisation.
 
-### Les Crons & la planification
+## Les Crons & la planification
 
 Le planificateur utilise un format cron expression pour parametrer l'interval d'execution de la tâche.
 
@@ -122,11 +118,6 @@ Pour chaque valeur numérique (mm, hh, jj, MMM, JJJ) les notations possibles son
 
 <em>Extrait de Wikipedia</em>
 
-### Les logs des commandes
+## Les logs des commandes
 
 Les logs des commandes sont visibles dans l'interface d'administration.
-
-
-
-
-
