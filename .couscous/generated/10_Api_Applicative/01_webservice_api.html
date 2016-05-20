@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title></title>
+
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/highlight.dark.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+
+        <header class="navbar navbar-default navbar-fixed-top">
+
+            <a class="navbar-brand" href="/">
+                The title
+                <small class="hidden-xs hidden-sm">
+                    This is the default subtitle!
+                </small>
+            </a>
+
+            
+        </header>
+
+        <main class="container">
+            <div class="row">
+
+                
+                <section id="content" class="col-sm-12">
+                    <h1 id="mthode--getlead">Méthode : getLead</h1>
+<p>Méthode utilisable pour récupérer des données de la lead’s. Cette méthode retourne un objet JSON contenant le détail d’un lead.</p>
+<h2 id="route-dappel">Route d'appel</h2>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Route</td>
+<td>/lead/{id}/{key}</td>
+</tr>
+<tr>
+<td>Identifiant de route</td>
+<td>Aucun</td>
+</tr>
+</tbody>
+</table>
+<h2 id="parametres">Parametres</h2>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>Identifiant de la lead à charger</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>Code de sécurité de l’API.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="valeur-de-retour-">Valeur de retour :</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Json</td>
+<td>Données encodées en JSON de la lead’s</td>
+</tr>
+</tbody>
+</table>
+<h1 id="mthode--validateemail">Méthode : validateEmail</h1>
+<p>Méthode POST.</p>
+<p>Cette méthode permet de déclarer un email comme validé à la lead’s.
+Route d’appel :</p>
+<h2 id="route-dappel-1">Route d'appel</h2>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Route</td>
+<td>/email/validate</td>
+</tr>
+<tr>
+<td>Identifiant de route</td>
+<td>Aucun</td>
+</tr>
+</tbody>
+</table>
+<h2 id="paramtre-">Paramètre :</h2>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td>Email à déclarer comme valide</td>
+</tr>
+</tbody>
+</table>
+<h2 id="valeurs-de-retour-">Valeurs de retour :</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Json</td>
+<td>Information sur l’action de validation</td>
+</tr>
+</tbody>
+</table>
+<h1 id="mthode--getleads">Méthode : getLeads</h1>
+<p>Méthode POST.</p>
+<p>Méthode utilisable pour récupérer des données de la lead’s. Cette méthode retourne plusieurs objets JSON contenant le détail d’un lead.
+Route d’appel :</p>
+<h2 id="route-dappel-2">Route d'appel</h2>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Route</td>
+<td>/leads</td>
+</tr>
+<tr>
+<td>Identifiant de route</td>
+<td>Aucun</td>
+</tr>
+</tbody>
+</table>
+<h2 id="paramtre--1">Paramètre :</h2>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>datemin</td>
+<td>Date de début (date de création) : Format Y-m-d</td>
+</tr>
+<tr>
+<td>datemax</td>
+<td>Date de fin (date de création) : Format Y-m-d</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>Possibilité de filtrer les lead’s par email</td>
+</tr>
+<tr>
+<td>form</td>
+<td>Possibilité de filtrer les lead’s par formulaire source</td>
+</tr>
+</tbody>
+</table>
+<h2 id="valeur-de-retour--1">Valeur de retour :</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Json</td>
+<td>Données encodées en JSON des leads</td>
+</tr>
+</tbody>
+</table>
+<h1 id="mthode--postlead">Méthode : postLead</h1>
+<p>Méthode permettant d’injecter un lead’s dans la lead’s factory en méthode POST.</p>
+<p>Attention, l’utilisation de cette méthode n’enregistre pas de pages vues. Vous risquez donc d’avoir des statistiques faux.
+Route d’appel :</p>
+<h2 id="route-dappel-3">Route d'appel</h2>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Route</td>
+<td>/lead/post</td>
+</tr>
+<tr>
+<td>Identifiant de route</td>
+<td>Aucun</td>
+</tr>
+</tbody>
+</table>
+<h2 id="paramtre--2">Paramètre :</h2>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td>Json de la lead’s à enregistrer</td>
+</tr>
+</tbody>
+</table>
+<h2 id="valeur-de-retour--2">Valeur de retour :</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>1 si succès &amp; 0 en cas d’erreur.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="le-json-doit-contenir-des-valeurs-remarquables-">Le JSON doit contenir des valeurs remarquables :</h2>
+<table>
+<thead>
+<tr>
+<th>Nom</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>utmcampaign</td>
+<td>Code action associé à la lead’s</td>
+<td>non</td>
+</tr>
+<tr>
+<td>firstName</td>
+<td>Prénom</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>lastName</td>
+<td>Nom</td>
+<td>oui</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>Téléphone</td>
+<td>Non</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Email</td>
+<td>Non</td>
+</tr>
+<tr>
+<td>formCode</td>
+<td>Code technique du formulaire lié.</td>
+<td>oui</td>
+</tr>
+</tbody>
+</table>
+                </section>
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p class="text-muted">
+                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
+                </p>
+            </div>
+        </footer>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="//yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+
+        <script>
+            $(function() {
+                $("section>h1").wrap('<div class="page-header" />');
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
+        <!-- Livereload -->
+        <script>
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+                    ':35729/livereload.js?snipver=1"></' + 'script>')
+        </script>
+        <!-- End Livereload -->
+    </body>
+</html>

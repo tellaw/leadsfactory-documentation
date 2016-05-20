@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title></title>
+
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/highlight.dark.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+
+        <header class="navbar navbar-default navbar-fixed-top">
+
+            <a class="navbar-brand" href="/">
+                The title
+                <small class="hidden-xs hidden-sm">
+                    This is the default subtitle!
+                </small>
+            </a>
+
+            
+        </header>
+
+        <main class="container">
+            <div class="row">
+
+                
+                <section id="content" class="col-sm-12">
+                    <h1 id="api-taches-planifies">API Taches planifiées</h1>
+<p>L'api de taches planifiées de la lead's factory permet la programmation et le monitoring de commandes symfony.</p>
+<h2 id="les-commandes-symfony">Les commandes Symfony</h2>
+<p>Symfony 2 permet la création de commandes dans sa console. Ses commandes utilisent le framework et le container Symfony comme environnement d'execution.</p>
+<p>Dans la lead's factory, une commande se trouve par convention dans un dossier <strong>Command</strong>.</p>
+<p>C'est une classe qui etend généralement une des classes suivantes :</p>
+<p><code>ContainerAwareCommand (Symfony\Bundle\FrameworkBundle\Command)</code>
+<code>Command (Symfony\Component\Console\Command)</code></p>
+<p>Vous pouvez lister les commandes existantes en utilisant en ligne de commande :</p>
+<p><code>php app/console</code></p>
+<h2 id="rendre-un-commande-compatible">Rendre un commande compatible</h2>
+<p>Toutes les commandes Symfony 2 sont compatibles avec le planificateur de taches de la lead's factory. Seul le chargement automatique dans la lead's factory demande la configuration d'un service supplémentaire (voir chapitre : Pré-configurer une tache)</p>
+<h2 id="pr-configurer-une-tache-dans-ladmin">Pré-configurer une tache dans l'admin</h2>
+<p>Il suffit de créer un service implémentant l'interface <strong>IScheduledJob (Tellaw\LeadsFactoryBundle\Utils)</strong> taggé avec le tag <strong>scheduled.job</strong></p>
+<p>L'execution du cronjob de la lead's factory <strong>CronRunnerCommand</strong> va automatiquement initialiser ce nouveau Job.</p>
+<p><strong>Exemple :</strong></p>
+<p>Pour initialiser automatiquement une tâche planifiée avec monitoring sur le cronjob <strong>StatusHistoryUpdateCommand</strong>, le service suivant doit etre déclaré.</p>
+<p><em>Le service d'initialisation :</em></p>
+<pre><code>&lt;?php
+namespace Tellaw\LeadsFactoryBundle\Utils\ScheduledJobs;
+
+use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use Tellaw\LeadsFactoryBundle\Utils\IScheduledJob;
+
+class StatusHistoryScheduler implements IScheduledJob
+{
+
+    public function getExpression()
+    {
+        return "1 * * * * *";
+    }
+
+    public function getName()
+    {
+        return "Core_AlertStatusHistory_Job";
+    }
+
+    public function getCommands()
+    {
+        return array ('leadsfactory:statusHistory:update');
+    }
+
+    public function getEnabled()
+    {
+        return true;
+    }
+
+}</code></pre>
+<p><strong>La configuration du service (services.yml) :</strong></p>
+<pre><code>leadsfactory.scheduled_status_history:
+    class: Tellaw\LeadsFactoryBundle\Utils\ScheduledJobs\StatusHistoryScheduler
+    tags:
+        - { name: scheduled.job }</code></pre>
+<p>Après la première initilisation, les valeurs sont modifiables dans l'administration de la lead's. Pour éviter l'écrasement de paramétrage, seule la 'commande' sera mise à jour si sa valeur change dans le service d'initialisation.</p>
+<h2 id="les-crons-amp-la-planification">Les Crons &amp; la planification</h2>
+<p>Le planificateur utilise un format cron expression pour parametrer l'interval d'execution de la tâche.</p>
+<p>Certains intervals sont pré-configuré dans la lead's :</p>
+<pre>
+@yearly, @annually) - Run once a year, midnight, Jan. 1 - 0 0 1 1 *
+@monthly - Run once a month, midnight, first of month - 0 0 1 * *
+@weekly - Run once a week, midnight on Sun - 0 0 * * 0
+@daily - Run once a day, midnight - 0 0 * * *
+@hourly - Run once an hour, first minute - 0 * * * *
+</pre>
+<p>Syntaxe d'une cron expression :</p>
+<p>Chaque entrée de la table (chaque ligne) correspond à une tâche à exécuter et doit respecter cette notation :</p>
+<pre>
+mm hh jj MMM JJJ tâche
+mm représente les minutes (de 0 à 59)
+hh représente l'heure (de 0 à 23)
+jj représente le numéro du jour du mois (de 1 à 31)
+MMM représente l'abréviation du nom du mois (jan, feb, ...) ou bien le numéro du mois (de 1 à 12)
+JJJ représente l'abréviation du nom du jour ou bien le numéro du jour dans la semaine :
+0 = Dimanche
+1 = Lundi
+2 = Mardi
+...
+6 = Samedi
+7 = Dimanche (représenté deux fois pour les deux types de semaine)
+</pre>
+<p>Pour chaque valeur numérique (mm, hh, jj, MMM, JJJ) les notations possibles sont :</p>
+<pre>
+* : à chaque unité (0, 1, 2, 3, 4...)
+5,8 : les unités 5 et 8
+2-5 : les unités de 2 à 5 (2, 3, 4, 5)
+*/3 : toutes les 3 unités (0, 3, 6, 9...)
+10-20/3 : toutes les 3 unités, entre la dixième et la vingtième (10, 13, 16, 19)
+</pre>
+<p><em>Extrait de Wikipedia</em></p>
+<h2 id="les-logs-des-commandes">Les logs des commandes</h2>
+<p>Les logs des commandes sont visibles dans l'interface d'administration.</p>
+                </section>
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p class="text-muted">
+                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
+                </p>
+            </div>
+        </footer>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="//yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+
+        <script>
+            $(function() {
+                $("section>h1").wrap('<div class="page-header" />');
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
+        <!-- Livereload -->
+        <script>
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+                    ':35729/livereload.js?snipver=1"></' + 'script>')
+        </script>
+        <!-- End Livereload -->
+    </body>
+</html>

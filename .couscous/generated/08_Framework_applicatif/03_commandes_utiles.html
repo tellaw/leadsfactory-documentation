@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title></title>
+
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/highlight.dark.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+
+        <header class="navbar navbar-default navbar-fixed-top">
+
+            <a class="navbar-brand" href="/">
+                The title
+                <small class="hidden-xs hidden-sm">
+                    This is the default subtitle!
+                </small>
+            </a>
+
+            
+        </header>
+
+        <main class="container">
+            <div class="row">
+
+                
+                <section id="content" class="col-sm-12">
+                    <h1 id="commandes-utiles">Commandes utiles</h1>
+<p>Cette séction regroupe les commandes utilisables en console. Ce mémo va vous servir autant pour l'exploitation que pour la mise en oeuvre des services</p>
+<h2 id="installation-des-vendors-">Installation des vendors :</h2>
+<p><code>$ php composer.phar install</code></p>
+<h2 id="mise--jour-de-composer-">Mise à jour de composer :</h2>
+<p><code>$ php composer.phar self-update</code></p>
+<h2 id="mise--jour-des-vendors-">Mise à jour des vendors :</h2>
+<p><code>$ php composer.phar update</code></p>
+<h2 id="mise--jour-du-modle-de-base-de-donnes-">Mise à jour du modèle de base de données :</h2>
+<p><code>$ php app/console doctrine:schema:update --force</code></p>
+<h2 id="gnrer-des-donnes-de-dmo">Générer des données de démo</h2>
+<p><code>$ php app/console leadsfactory :demomode &lt;formid&gt;</code></p>
+<h2 id="vider-le-cache-symfony">Vider le cache Symfony</h2>
+<p><code>$ php app/console cache :clear –env=prod</code></p>
+<h2 id="mise--jour-de-lhistorique-de-status">Mise à jour de l'historique de status</h2>
+<p><code>php app/console leadsfactory:statusHistory:update</code></p>
+                </section>
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p class="text-muted">
+                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
+                </p>
+            </div>
+        </footer>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="//yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+
+        <script>
+            $(function() {
+                $("section>h1").wrap('<div class="page-header" />');
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
+        <!-- Livereload -->
+        <script>
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+                    ':35729/livereload.js?snipver=1"></' + 'script>')
+        </script>
+        <!-- End Livereload -->
+    </body>
+</html>

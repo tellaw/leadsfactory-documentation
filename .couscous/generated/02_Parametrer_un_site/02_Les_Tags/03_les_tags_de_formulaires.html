@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title></title>
+
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/highlight.dark.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+
+        <header class="navbar navbar-default navbar-fixed-top">
+
+            <a class="navbar-brand" href="/">
+                The title
+                <small class="hidden-xs hidden-sm">
+                    This is the default subtitle!
+                </small>
+            </a>
+
+            
+        </header>
+
+        <main class="container">
+            <div class="row">
+
+                
+                <section id="content" class="col-sm-12">
+                    <h1 id="templating-des-formulaires">Templating des formulaires</h1>
+<h2 id="objet--text">Objet : Text</h2>
+<h3 id="description-">Description :</h3>
+<p>C’est un champ texte à une ligne.</p>
+<h3 id="appel-twig-">Appel TWIG :</h3>
+<pre><code>{{ field(
+    {   'type': 'text', 
+        'attributes': {
+            'id': 'lastName'}
+    }) 
+}}</code></pre>
+<h3 id="rendu-html-">Rendu HTML :</h3>
+<pre><code>&lt;input type="text" id="lastName" name="lastName"/&gt;</code></pre>
+<h2 id="objet--textarea">Objet : TextArea</h2>
+<h3 id="description--1">Description :</h3>
+<p>C’est un champ texte à une ligne.</p>
+<h3 id="appel-twig--1">Appel TWIG :</h3>
+<pre><code>{{ field(
+    {   'type': 'textarea', 
+        'attributes': {
+            'id': 'lastName'}
+    }) 
+}}</code></pre>
+<h3 id="rendu-html--1">Rendu HTML :</h3>
+<pre><code>&lt;textarea id="lastName" name="lastName"&gt;&lt;/textarea&gt;</code></pre>
+<h2 id="objet--tlphone">Objet : Téléphone</h2>
+<h3 id="description--2">Description :</h3>
+<p>C’est un champ texte à une ligne utilisable pour la saisie d’un numéro de téléphone.
+Attention, n’oubliez l’ajout des contrôles de validation sur ce champ.</p>
+<h3 id="appel-twig--2">Appel TWIG :</h3>
+<pre><code>{{ field(
+    {   'type': 'phone', 
+        'attributes': {
+            'id': 'myphone'}
+    }) 
+}}</code></pre>
+<h3 id="rendu-html--2">Rendu HTML :</h3>
+<pre><code>&lt;input type="text" id="myphone"/&gt;</code></pre>
+<h2 id="objet--email">Objet : Email</h2>
+<h3 id="description--3">Description :</h3>
+<p>C’est un champ texte à une ligne utilisable pour la saisie d’un email.
+Attention, n’oubliez l’ajout des contrôles de validation sur ce champ.</p>
+<h3 id="appel-twig--3">Appel TWIG :</h3>
+<pre><code>{{ field(
+    {   'type': 'email', 
+        'attributes': {
+            'id': 'myEmail'}
+    }) 
+}}</code></pre>
+<h3 id="rendu-html--3">Rendu HTML :</h3>
+<pre><code>&lt;input type="text" id="myphone"/&gt;</code></pre>
+<h2 id="objet--checkbox">Objet : Checkbox</h2>
+<h3 id="description--4">Description :</h3>
+<p>C’est une case à cocher. Par défaut non cochée.</p>
+<h3 id="appel-twig--4">Appel TWIG :</h3>
+<pre><code>{{ field(
+    {   'type': 'checkbox', 
+        'attributes': {
+            'id': 'myCheckbox',
+            'checked' : 'checked'}
+    }) 
+}}</code></pre>
+<h3 id="rendu-html--4">Rendu HTML :</h3>
+<pre><code>&lt;input type="checkbox" id="myCheckbox" checked="checked"/&gt;</code></pre>
+<h3 id="attributs-">Attributs :</h3>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@checked='checked'</td>
+<td>Case cochée par défaut</td>
+</tr>
+</tbody>
+</table>
+<h2 id="objet--liste">Objet : Liste</h2>
+<h3 id="description--5">Description :</h3>
+<p>Ceci affiche une liste de référence contenant les valeurs de la liste configurée dans le backoffice sous l’identifiant ‘salutation’.</p>
+<p>La liste va pouvoir etre affichée sous une des formes suivantes :</p>
+<ul>
+<li>Liste déroulante type ‘select’</li>
+<li>Liste de case à cocher type ‘checkbox’</li>
+<li>Liste de choix type ‘options’</li>
+</ul>
+<h3 id="appel-twig--5">Appel TWIG :</h3>
+<pre><code>{{ 
+    field(
+        {   
+            'type': 'reference-list', 
+            'attributes': {
+                'id': 'salutation', 
+                'data-list': 'salutation', 
+                'validator': 'required' }
+            }
+        ) 
+}}</code></pre>
+<h3 id="rendu-html--5">Rendu HTML :</h3>
+<pre><code>&lt;select id="salutation"&gt;
+    &lt;option... valeurs de la liste de ref /&gt;
+&lt;/select&gt;</code></pre>
+<h3 id="attributs--1">Attributs :</h3>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@display</td>
+<td><strong>select</strong> : Affichage de type liste déroulante</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td><strong>checkbox</strong> : Affichage de type checkbox</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td><strong>radio</strong> : Affichage de type radio</td>
+</tr>
+</tbody>
+</table>
+<h2 id="objet--listes-lies">Objet : Listes liées</h2>
+<h3 id="description--6">Description :</h3>
+<p>Les listes liées permettent la mise à jour en cascade de listes de références suivant les choix de l’utilisateur.</p>
+<h3 id="appel-twig--6">Appel TWIG :</h3>
+<pre><code>{{ 
+    field(  {
+        'type': 'linked-reference-list', 
+        'attributes': {
+            'id': 'ville_id', 
+            'data-parent': 'zip', 
+            'data-list': 'ville', 
+            'data-default': 'Saisissez d\'abord un code postal',
+            'validator': 'required'}
+            }) 
+}}</code></pre>
+<h3 id="exemple-dutilisation-avec-code-postal--ville">Exemple d'utilisation avec code postal / ville</h3>
+<pre><code>    &lt;div&gt;
+
+        &lt;p&gt;
+            &lt;label for="zip"&gt;Code postal&lt;span class="red"&gt;&amp;nbsp;*&lt;/span&gt;&lt;/label&gt;
+            {{  field(  {
+                    'type': 'text', 
+                    'attributes': {
+                        'id': 'zip', 
+                        'data-list': 'zipcode', 
+                        'validator': 'required'}
+                        }) 
+                }}
+        &lt;/p&gt;
+
+        &lt;p&gt;
+            &lt;label for="ville_text"&gt;Ville&lt;span class="red"&gt;&amp;nbsp;*&lt;/span&gt;&lt;/label&gt;
+            {{ field(   {
+                    'type': 'linked-reference-list', 
+                    'attributes': {
+                        'id': 'ville_id', 
+                        'data-parent': 'zip', 
+                        'data-list': 'ville', 
+                        'data-default': 'Saisissez d\'abord un code postal',
+                        'validator': 'required'}}) }}
+        &lt;/p&gt;
+
+    &lt;/div&gt;  </code></pre>
+<p>Cet exemple assume que vous disposez de deux listes de références :</p>
+<ul>
+<li>zipcode : Liste des codes postaux.</li>
+<li>ville : Villes liées aux codes postaux.</li>
+</ul>
+<h3 id="rendu-html--6">Rendu HTML :</h3>
+<pre><code>&lt;select id="salutation"&gt;
+    &lt;option... valeurs de la liste de ref /&gt;
+&lt;/select&gt;</code></pre>
+<p><em>un appel javascript ajouté se chargera de la mise à jour en cascade</em></p>
+<h3 id="attributs--2">Attributs :</h3>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@display</td>
+<td><strong>select</strong> : Affichage de type liste déroulante</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td><strong>checkbox</strong> : Affichage de type checkbox</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td><strong>radio</strong> : Affichage de type radio</td>
+</tr>
+</tbody>
+</table>
+<h1 id="tag-dappel-twig">Tag d'appel Twig</h1>
+<pre><code>&lt;link rel="stylesheet" type="text/css" href="[url serveur lead's factory]/leads-factory/web/bundles/tellawleadsfactory/js/libs/formValidator/developr.validationEngine.css" /&gt;
+
+&lt;div id="form-classic" class="loading-leads"&gt;
+    &lt;img src="/images/loader.gif" alt="Chargement" width="100" height="100" class="loading-leads-img" /&gt;
+    &lt;p class="loading-leads-txt"&gt;Merci de patienter ...&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;
+    baseUrl = '[url serveur lead's factory]/leads-factory/';
+    jQuery.when(
+        jQuery.getScript('[url serveur lead's factory]/leads-factory/web/bundles/tellawleadsfactory/js/lf.js'),
+        jQuery.getScript('[url serveur lead's factory]/leads-factory/web/bundles/tellawleadsfactory/js/libs/formValidator/jquery.validationEngine.js'),
+        jQuery.getScript('[url serveur lead's factory]/leads-factory/web/bundles/tellawleadsfactory/js/libs/formValidator/languages/jquery.validationEngine-fr.js'),
+        jQuery.getScript('[url serveur lead's factory]/leads-factory/web/app_dev.php/client/form/twig/[ID Formulaire]'),
+        jQuery(document).data("readyDeferred")
+    ).done(function() {
+        jQuery('#form-classic').html(leadsfactory.html);
+        jQuery('#form-classic').removeClass('loading-leads');
+        var params = {};
+        var options = {};
+        leadsfactory.init('??', params, options);
+    });
+&lt;/script&gt;</code></pre>
+                </section>
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p class="text-muted">
+                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
+                </p>
+            </div>
+        </footer>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="//yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+
+        <script>
+            $(function() {
+                $("section>h1").wrap('<div class="page-header" />');
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
+        <!-- Livereload -->
+        <script>
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+                    ':35729/livereload.js?snipver=1"></' + 'script>')
+        </script>
+        <!-- End Livereload -->
+    </body>
+</html>
